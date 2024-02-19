@@ -8,7 +8,7 @@ namespace WebService.Interface
         where TEnty : class
     {
         Task<Resultreturn<TModel>> GetAll(Paginationpage<TEnty> paginationpage);
-
+        Task<IList<TModel>> GetAll();
         Task<bool> Add(TModel model);
 
         Task<bool> Update(TModel model);

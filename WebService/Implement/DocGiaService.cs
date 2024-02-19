@@ -7,27 +7,30 @@ using WebService.Interface;
 
 namespace WebService.Implement
 {
-    public class NhaXuatBanService : Service<NhaXuatBanvm, NhaXuatBan>, INhaXuatBanService
+    public class DocGiaService : Service<DocGiavm, DocGia>, IDocGiaService
     {
-        public NhaXuatBanService(INhaXuatBanRepository nhaXuatBanRepository,
+        public DocGiaService(IDocGiaRepository DocGiaRepository,
             IUnitOfWork unitOfWork,
             IMapper mapper)
-        : base(nhaXuatBanRepository, unitOfWork, mapper)
+        : base(DocGiaRepository, unitOfWork, mapper)
         {
         }
-        public async Task<bool> AddNhaXuatBan(NhaXuatBanvm model)
+
+        public async Task<bool> AddDocGia(DocGiavm model)
         {
             return await Add(model);
         }
-        public async Task<bool> DeleteNhaXuatBan(int id)
+
+        public async Task<bool> DeleteDocGia(Guid id)
         {
             return await Delete(x => x.Id == id);
         }
-        public async Task<Resultreturn<NhaXuatBanvm>> GetAllNhaXuatBan(SearchParameters searchParameters)
+
+        public async Task<Resultreturn<DocGiavm>> GetAllDocGia(SearchParameters searchParameters)
         {
             try
             {
-                Paginationpage<NhaXuatBan> _paginationpage = new Paginationpage<NhaXuatBan>();
+                Paginationpage<DocGia> _paginationpage = new Paginationpage<DocGia>();
                 _paginationpage.PerPage = searchParameters.totalnumber;
                 _paginationpage.PageNumber = searchParameters.number;
                 if (searchParameters.keywork != null)
@@ -43,23 +46,12 @@ namespace WebService.Implement
             }
         }
 
-        public async Task<IList<NhaXuatBanvm>> GetAllNhaXuatBan()
-        {
-            try
-            {
-                return await GetAll();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-
-        public async Task<NhaXuatBanvm> GetNhaXuatBan(int id)
+        public async Task<DocGiavm> GetDocGia(Guid id)
         {
             return await Get(x => x.Id == id);
         }
-        public async Task<bool> UpdateNhaXuatBan(NhaXuatBanvm model)
+
+        public async Task<bool> UpdateDocGia(DocGiavm model)
         {
             return await Update(model);
         }
