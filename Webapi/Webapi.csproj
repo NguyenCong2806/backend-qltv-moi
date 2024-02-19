@@ -38,6 +38,7 @@
 
   <ItemGroup>
     <Folder Include="Logfile\" />
+    <Folder Include="Models\" />
     <Folder Include="StaticFiles\" />
   </ItemGroup>
 

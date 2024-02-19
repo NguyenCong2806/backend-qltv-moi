@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.StaticFiles;
-using Microsoft.EntityFrameworkCore;
-using System.IO;
 using System.Net.Http.Headers;
 
 namespace Webapi.Configuration
@@ -9,10 +7,12 @@ namespace Webapi.Configuration
     public class FileServer : IFileServer
     {
         private readonly Microsoft.AspNetCore.Hosting.IHostingEnvironment _hostingEnvironment;
-        public FileServer(Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment) 
+
+        public FileServer(Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment)
         {
             _hostingEnvironment = hostingEnvironment;
         }
+
         public bool DeleteFile(string filename)
         {
             var folderName = Path.Combine("StaticFiles");
@@ -116,12 +116,12 @@ namespace Webapi.Configuration
 
                 var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
                 var fullPath = Path.Combine(pathToSave, fileName);
-                if (Directory.Exists(Path.GetDirectoryName(fullPath)) 
+                if (Directory.Exists(Path.GetDirectoryName(fullPath))
                     && file.Length <= filesize)
                 {
                     using (var stream = new FileStream(fullPath, FileMode.Create))
                     {
-                        await file.CopyToAsync(stream);                    
+                        await file.CopyToAsync(stream);
                     }
                 }
                 return true;
@@ -141,7 +141,7 @@ namespace Webapi.Configuration
                 var pathToRead = Path.Combine(Directory.GetCurrentDirectory(), folderName);
                 files = Directory.EnumerateFiles(pathToRead)
                     .Where(IsAPhotoFile)
-                    .Select(fullPath => folderName +"/"+ Path.GetFileName(fullPath)).ToList();
+                    .Select(fullPath => folderName + "/" + Path.GetFileName(fullPath)).ToList();
 
                 return await Task.Run(() => files);
             }
