@@ -9,6 +9,7 @@ namespace WebRepository.Interface
         TEnty Get(Expression<Func<TEnty, bool>> expression);
 
         IQueryable<TEnty> GetAll(Paginationpage<TEnty> paginationpage);
+        IQueryable<TEnty> GetAll();
 
         IQueryable<TEnty> GetAll(Expression<Func<TEnty, bool>> expression);
 

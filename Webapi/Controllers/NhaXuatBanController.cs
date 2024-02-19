@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using WebDataModel.BaseClass;
 using WebDataModel.ViewModel;
+using WebService.Implement;
 using WebService.Interface;
 
 namespace Webapi.Controllers
@@ -21,6 +22,11 @@ namespace Webapi.Controllers
         public async Task<IActionResult> Get([FromQuery] SearchParameters searchParameters)
         {
             return Ok(await _nhaXuatBanService.GetAllNhaXuatBan(searchParameters));
+        }
+        [HttpGet("getnhaxuatbanselect")]
+        public async Task<IActionResult> Get()
+        {
+            return Ok(await _nhaXuatBanService.GetAllNhaXuatBan());
         }
 
         [HttpGet("getbynhaxuatban/{id}")]

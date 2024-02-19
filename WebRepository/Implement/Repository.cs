@@ -173,6 +173,19 @@ namespace WebRepository.Implement
             }
         }
 
+        public IQueryable<TEnty> GetAll()
+        {
+            try
+            {
+                var data = _dbSet.AsQueryable();
+                return data;
+            }
+            catch (Exception ex)
+            {
+                throw new NotImplementedException(ex.Message);
+            }
+        }
+
         public async Task<IEnumerable<TEnty>> GetAllAsync(CancellationToken cancellationToken = default)
         {
             try

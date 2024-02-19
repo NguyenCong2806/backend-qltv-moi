@@ -44,6 +44,18 @@ namespace WebService.Implement
             }
         }
 
+        public async Task<IList<LoaiSachvm>> GetAllLoaiSach()
+        {
+            try
+            {
+                return await GetAll();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public async Task<LoaiSachvm> GetLoaiSach(int id)
         {
             return await Get(x=>x.Id ==id);

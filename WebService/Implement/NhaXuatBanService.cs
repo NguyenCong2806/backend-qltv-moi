@@ -43,6 +43,18 @@ namespace WebService.Implement
             }
         }
 
+        public async Task<IList<NhaXuatBanvm>> GetAllNhaXuatBan()
+        {
+            try
+            {
+                return await GetAll();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public async Task<NhaXuatBanvm> GetNhaXuatBan(int id)
         {
             return await Get(x => x.Id == id);

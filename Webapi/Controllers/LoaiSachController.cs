@@ -21,6 +21,11 @@ namespace Webapi.Controllers
         {
             return Ok(await _loaiSachService.GetAllLoaiSach(searchParameters));
         }
+        [HttpGet("getloaisachselect")]
+        public async Task<IActionResult> Get()
+        {
+            return Ok(await _loaiSachService.GetAllLoaiSach());
+        }
 
         [HttpGet("getbyloaisach/{id}")]
         public async Task<IActionResult> GetById(int id)
