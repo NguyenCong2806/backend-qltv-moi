@@ -36,6 +36,8 @@ namespace Webapi.Configuration
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<ILoaiSachRepository, LoaiSachRepository>();
             services.AddTransient<INhaXuatBanRepository, NhaXuatBanRepository>();
+            services.AddTransient<IDocGiaRepository, DocGiaRepository>();
+            
             return services;
         }
         public static IServiceCollection GetServices(this IServiceCollection services)
@@ -45,6 +47,7 @@ namespace Webapi.Configuration
             services.AddTransient<IMailService, MailService>();
             services.AddTransient<ILoaiSachService, LoaiSachService>();
             services.AddTransient<INhaXuatBanService, NhaXuatBanService>();
+            services.AddTransient<IDocGiaService, DocGiaService>();
             return services;
         }
         public static IServiceCollection Authentication(this IServiceCollection services, IConfiguration configuration)

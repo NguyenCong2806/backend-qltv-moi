@@ -24,6 +24,6 @@ namespace WebEntryModel.EF
         [MaxLength(255)]
         public string Email { get; set; }
         [Required]
-        public DateTime HanSuDung { get; set; } = DateTime.Now.AddDays(30);
+        public DateTime HanSuDung { get; set; } = DateTime.Now.AddYears(1);
     }
 }
