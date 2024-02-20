@@ -22,7 +22,11 @@ namespace Webapi.Controllers
         {
             return Ok(await _DocGiaService.GetAllDocGia(searchParameters));
         }
-
+        [HttpGet("getsearch/{name}")]
+        public async Task<IActionResult> Get(string name)
+        {
+            return Ok(await _DocGiaService.GetAllSearch(name));
+        }
         [HttpGet("getbydocgia/{id}")]
         public async Task<IActionResult> GetById(Guid id)
         {

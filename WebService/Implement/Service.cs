@@ -106,6 +106,19 @@ namespace WebService.Implement
             }
         }
 
+        public async Task<IList<TModel>> GetAll(Expression<Func<TEnty, bool>> expression)
+        {
+            try
+            {
+                return await _mapper.ProjectTo<TModel>(_repository.GetAll(expression))
+                                                    .ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new NotImplementedException(ex.Message);
+            }
+        }
+
         public async Task<bool> Update(TModel model)
         {
             try
