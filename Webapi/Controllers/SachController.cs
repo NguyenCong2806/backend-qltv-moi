@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Webapi.Configuration;
+using Webapi.Model;
 using WebDataModel.BaseClass;
 using WebDataModel.ViewModel;
 using WebService.Implement;
@@ -51,6 +52,17 @@ namespace Webapi.Controllers
         public IActionResult DeleteFile(string filename)
         {
             return Ok(_fileServer.DeleteFile(filename));
+        }
+        [HttpPut("editsach")]
+        public async Task<IActionResult> Edit([FromBody] Sachvm model)
+        {
+            return Ok(await _sachService.UpdateSach(model));
+        }
+        [HttpPut("editfile")]
+        public async Task<IActionResult> EditFile(IFormFile file, string filename)
+        {
+            var _isdel = await _fileServer.EditFile(file, filename);
+            return Ok(_isdel);
         }
     }
 }

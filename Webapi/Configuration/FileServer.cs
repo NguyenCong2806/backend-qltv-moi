@@ -169,5 +169,15 @@ namespace Webapi.Configuration
             }
             return contentType;
         }
+
+        public async Task<bool> EditFile(IFormFile file, string path)
+        {
+            var _isdel = await UploadSingleFileAsync(file, 20000000);
+            if (_isdel)
+            {
+                DeleteFile(path);
+            }
+            return _isdel;
+        }
     }
 }
