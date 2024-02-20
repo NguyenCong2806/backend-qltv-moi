@@ -5,6 +5,7 @@ namespace Webapi.Configuration
     public interface IFileServer
     {
         public Task<bool> FileExistsAsync(IFormFile file);
+        public Task<bool> EditFile(IFormFile file, string path);
         public Task<double> FileSizeAsync(IFormFile file);
         public Task<bool> FileExistsAsync(string path);
         public Task<bool> UploadSingleFileAsync(IFormFile file,double filesize);

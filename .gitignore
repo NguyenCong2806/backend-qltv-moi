@@ -475,3 +475,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+Webapi/StaticFiles/sach-hay-dac-nhan-tam.jpg
+Webapi/StaticFiles/sach-hay-nha-gia-kim.jpg
+*.jpg

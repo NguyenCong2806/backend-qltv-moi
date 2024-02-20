@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Webapi.Configuration;
+using Webapi.Model;
 using WebDataModel.BaseClass;
 using WebDataModel.ViewModel;
+using WebService.Implement;
 using WebService.Interface;
 
 namespace Webapi.Controllers
@@ -40,6 +42,27 @@ namespace Webapi.Controllers
         public async Task<IActionResult> Uploadfile(IFormFile file)
         {
             return Ok(await _fileServer.UploadSingleFileAsync(file, 20000000));
+        }
+        [HttpDelete("delsach/{id}")]
+        public async Task<IActionResult> Del(Guid id)
+        {
+            return Ok(await _sachService.DeleteSach(id));
+        }
+        [HttpDelete("delete/{filename}")]
+        public IActionResult DeleteFile(string filename)
+        {
+            return Ok(_fileServer.DeleteFile(filename));
+        }
+        [HttpPut("editsach")]
+        public async Task<IActionResult> Edit([FromBody] Sachvm model)
+        {
+            return Ok(await _sachService.UpdateSach(model));
+        }
+        [HttpPut("editfile")]
+        public async Task<IActionResult> EditFile(IFormFile file, string filename)
+        {
+            var _isdel = await _fileServer.EditFile(file, filename);
+            return Ok(_isdel);
         }
     }
 }

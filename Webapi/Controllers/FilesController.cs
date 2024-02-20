@@ -13,6 +13,7 @@ namespace Webapi.Controllers
         {
             _fileServer = fileServer;
         }
+
         [AllowAnonymous]
         [HttpGet("getfiles")]
         public async Task<IActionResult> GetFile()
@@ -24,6 +25,13 @@ namespace Webapi.Controllers
         public async Task<IActionResult> Upload(IFormFile file)
         {
             return Ok(await _fileServer.UploadSingleFileAsync(file, 20000000));
+        }
+
+        [HttpPut("editfile")]
+        public async Task<IActionResult> EditFile(IFormFile file, string filename)
+        {
+            var _isdel = await _fileServer.EditFile(file, filename);
+            return Ok(_isdel);
         }
 
         [HttpPost("delete/{filename}")]
