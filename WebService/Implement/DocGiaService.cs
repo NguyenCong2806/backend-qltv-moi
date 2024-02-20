@@ -46,6 +46,11 @@ namespace WebService.Implement
             }
         }
 
+        public async Task<IList<DocGiavm>> GetAllSearch(string name)
+        {
+            return await GetAll(x=>x.Name.Contains(name));
+        }
+
         public async Task<DocGiavm> GetDocGia(Guid id)
         {
             return await Get(x => x.Id == id);

@@ -26,7 +26,11 @@ namespace Webapi.Controllers
         {
             return Ok(await _sachService.GetAllSach(searchParameters));
         }
-
+        [HttpGet("getsearch/{name}")]
+        public async Task<IActionResult> Get(string name)
+        {
+            return Ok(await _sachService.GetAllSearch(name));
+        }
         [HttpGet("getbysach/{id}")]
         public async Task<IActionResult> GetById(Guid id)
         {

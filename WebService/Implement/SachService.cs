@@ -46,6 +46,11 @@ namespace WebService.Implement
             }
         }
 
+        public async Task<IList<Sachvm>> GetAllSearch(string name)
+        {
+            return await GetAll(x => x.Name.Contains(name));
+        }
+
         public async Task<Sachvm> GetSach(Guid id)
         {
             return await Get(x => x.Id == id);
