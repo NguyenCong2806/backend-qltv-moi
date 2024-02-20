@@ -38,6 +38,8 @@ namespace Webapi.Configuration
             services.AddTransient<INhaXuatBanRepository, NhaXuatBanRepository>();
             services.AddTransient<IDocGiaRepository, DocGiaRepository>();
             services.AddTransient<ISachRepository, SachRepository>();
+            services.AddTransient<IChiTietPhieuMuonRepository, ChiTietPhieuMuonRepository>();
+            services.AddTransient<IPhieuMuonRepository, PhieuMuonRepository>();
 
             return services;
         }
