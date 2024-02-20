@@ -2,6 +2,7 @@
 using Webapi.Configuration;
 using WebDataModel.BaseClass;
 using WebDataModel.ViewModel;
+using WebService.Implement;
 using WebService.Interface;
 
 namespace Webapi.Controllers
@@ -40,6 +41,16 @@ namespace Webapi.Controllers
         public async Task<IActionResult> Uploadfile(IFormFile file)
         {
             return Ok(await _fileServer.UploadSingleFileAsync(file, 20000000));
+        }
+        [HttpDelete("delsach/{id}")]
+        public async Task<IActionResult> Del(Guid id)
+        {
+            return Ok(await _sachService.DeleteSach(id));
+        }
+        [HttpDelete("delete/{filename}")]
+        public IActionResult DeleteFile(string filename)
+        {
+            return Ok(_fileServer.DeleteFile(filename));
         }
     }
 }
