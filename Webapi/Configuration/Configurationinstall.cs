@@ -52,7 +52,8 @@ namespace Webapi.Configuration
             services.AddTransient<INhaXuatBanService, NhaXuatBanService>();
             services.AddTransient<IDocGiaService, DocGiaService>();
             services.AddTransient<ISachService, SachService>();
-
+            services.AddTransient<IChiTietPhieumuonService, ChiTietPhieumuonService>();
+            services.AddTransient<IPhieuMuonService, PhieuMuonService>();
             return services;
         }
         public static IServiceCollection Authentication(this IServiceCollection services, IConfiguration configuration)
