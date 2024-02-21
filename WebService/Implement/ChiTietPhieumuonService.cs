@@ -7,7 +7,8 @@ using WebService.Interface;
 
 namespace WebService.Implement
 {
-    public class ChiTietPhieumuonService : Service<ChiTietPhieuMuonvm, ChiTietPhieuMuon>, IChiTietPhieumuonService
+    public class ChiTietPhieumuonService : Service<ChiTietPhieuMuonvm, ChiTietPhieuMuon>, 
+        IChiTietPhieumuonService
     {
         public ChiTietPhieumuonService(IChiTietPhieuMuonRepository ChiTietPhieuMuonRepository,
             IUnitOfWork unitOfWork,
@@ -21,9 +22,14 @@ namespace WebService.Implement
             return await Add(model);
         }
 
-        public Task<bool> AddChiTietPhieuMuon(IList<ChiTietPhieuMuonvm> models)
+        public async Task<bool> AddChiTietPhieuMuon(IList<ChiTietPhieuMuonvm> models)
         {
-            throw new NotImplementedException();
+            return await Add(models);
+        }
+
+        public async Task<bool> DeleteAllChiTietPhieuMuon(Guid id)
+        {
+            return await DeleteAll(x => x.PhieuMuonId == id);
         }
 
         public async Task<bool> DeleteChiTietPhieuMuon(Guid id)
@@ -51,9 +57,9 @@ namespace WebService.Implement
             }
         }
 
-        public async Task<IList<ChiTietPhieuMuonvm>> GetAllSearch(string name)
+        public async Task<IList<ChiTietPhieuMuonvm>> GetAllSearch(Guid Id)
         {
-            return await GetAll(x => x.PhieuMuon.DocGia.Name.Contains(name));
+            return await GetAll(x => x.PhieuMuon.Id ==Id);
         }
 
         public async Task<ChiTietPhieuMuonvm> GetChiTietPhieuMuon(Guid id)
@@ -66,9 +72,9 @@ namespace WebService.Implement
             return await Update(model);
         }
 
-        public Task<bool> UpdateChiTietPhieuMuon(IList<ChiTietPhieuMuonvm> models)
+        public async Task<bool> UpdateChiTietPhieuMuon(IList<ChiTietPhieuMuonvm> models)
         {
-            throw new NotImplementedException();
+            return await Update(models);
         }
     }
 }

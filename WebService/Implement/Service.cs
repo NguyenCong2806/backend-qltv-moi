@@ -41,12 +41,44 @@ namespace WebService.Implement
             }
         }
 
+        public async Task<bool> Add(IList<TModel> model)
+        {
+            try
+            {
+                var data = _mapper.Map<IList<TEnty>>(model);
+                var result = await _repository.AddRangeAsync(data);
+                await _unitOfWork.Commit();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                await _unitOfWork.Rollback();
+                throw new NotImplementedException(ex.Message);
+            }
+        }
+
         public async Task<bool> Delete(Expression<Func<TEnty, bool>> expression)
         {
             try
             {
                 var result = await _repository.GetAsync(expression);
                 var data = _repository.Remove(result);
+                await _unitOfWork.Commit();
+                return data;
+            }
+            catch (Exception ex)
+            {
+                await _unitOfWork.Rollback();
+                throw new NotImplementedException(ex.Message);
+            }
+        }
+
+        public async Task<bool> DeleteAll(Expression<Func<TEnty, bool>> expression)
+        {
+            try
+            {
+                var result = await _repository.GetAllAsync(expression);
+                var data = _repository.RemoveRange(result);
                 await _unitOfWork.Commit();
                 return data;
             }
@@ -125,6 +157,22 @@ namespace WebService.Implement
             {
                 var data = _mapper.Map<TEnty>(model);
                 var result = _repository.Update(data);
+                await _unitOfWork.Commit();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                await _unitOfWork.Rollback();
+                throw new NotImplementedException(ex.Message);
+            }
+        }
+
+        public async Task<bool> Update(IList<TModel> model)
+        {
+            try
+            {
+                var data = _mapper.Map<IList<TEnty>>(model);
+                var result = _repository.UpdateRange(data);
                 await _unitOfWork.Commit();
                 return result;
             }

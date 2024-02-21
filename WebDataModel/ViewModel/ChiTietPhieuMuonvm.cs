@@ -13,7 +13,5 @@ namespace WebDataModel.ViewModel
         public DateTime NgayTra { get; set; }
 
         public Sachvm? Sach { get; set; }
-
-        public PhieuMuonvm? PhieuMuon { get; set; }
     }
 }
