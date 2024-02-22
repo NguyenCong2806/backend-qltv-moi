@@ -12,6 +12,7 @@ namespace WebService.Interface
         Task<IList<TModel>> GetAll();
         Task<IList<TModel>> GetAll(Expression<Func<TEnty, bool>> expression);
         Task<bool> Add(TModel model);
+        Task<int> Count();
         Task<bool> Add(IList<TModel> model);
 
         Task<bool> Update(TModel model);
