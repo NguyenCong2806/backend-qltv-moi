@@ -24,6 +24,11 @@ namespace WebService.Implement
             return await base.Add(model);
         }
 
+        public Task<bool> ChangPassword(string password, int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<bool> Delete(int id)
         {
             return await base.Delete(exp => exp.Id == id);
@@ -61,7 +66,7 @@ namespace WebService.Implement
                 var data = await base.Get(exp => exp.Name == userLogin.UserName);
                 if (data != null)
                 {
-                    userLogin.Password = Base64Decode(userLogin.Password);
+                    //userLogin.Password = Base64Decode(userLogin.Password);
 
                     bool isPasswordMatch = BCrypt.Net.BCrypt.Verify(userLogin.Password, data.Password);
                     if (isPasswordMatch)
@@ -70,6 +75,7 @@ namespace WebService.Implement
                         userResult.Message = "Đăng nhập thành công";
                         userResult.Error = "Không có lỗi gì sảy ra!";
                         userResult.UserName = data.Name;
+                        userResult.UserId = data.Id;
                     }
                     else
                     {

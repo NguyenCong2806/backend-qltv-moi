@@ -40,6 +40,7 @@ namespace Webapi.Configuration
             services.AddTransient<ISachRepository, SachRepository>();
             services.AddTransient<IChiTietPhieuMuonRepository, ChiTietPhieuMuonRepository>();
             services.AddTransient<IPhieuMuonRepository, PhieuMuonRepository>();
+            services.AddTransient<IPhieuTraRepsitory, PhieuTraRepsitory>();
 
             return services;
         }
@@ -54,6 +55,7 @@ namespace Webapi.Configuration
             services.AddTransient<ISachService, SachService>();
             services.AddTransient<IChiTietPhieumuonService, ChiTietPhieumuonService>();
             services.AddTransient<IPhieuMuonService, PhieuMuonService>();
+            services.AddTransient<IPhieuTraService, PhieuTraService>();
             return services;
         }
         public static IServiceCollection Authentication(this IServiceCollection services, IConfiguration configuration)
