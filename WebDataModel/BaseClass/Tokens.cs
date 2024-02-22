@@ -2,6 +2,7 @@
 {
     public class Tokens
     {
+        public int Id { get; set; }
         public string Token { get; set; } = "notoken";
         public string RefreshToken { get; set; } = "noRefreshToken";
         public string UserName { get; set; }

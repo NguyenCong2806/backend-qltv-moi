@@ -8,6 +8,7 @@ namespace WebService.Interface
     {
         Task<Resultreturn<Uservm>> GetAllUser(SearchParameters searchParameters);
         Task<bool> AddUser(Uservm model);
+        Task<bool> ChangPassword(string password, int id);
         Task<bool> UpdateUser(Uservm model);
         Task<bool> Delete(int id);
         Task<UserResult> Login(UserLogin userLogin);

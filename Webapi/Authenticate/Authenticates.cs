@@ -38,6 +38,7 @@ namespace Webapi.Authenticate
                     string refreshToken = GenerateRefreshToken();
 
                     tokens.Status = true;
+                    tokens.Id = _isCheckLogin.UserId;
                     tokens.UserName = _isCheckLogin.UserName;
                     tokens.Role = _isCheckLogin.Role;
                     tokens.Token = accessToken;
