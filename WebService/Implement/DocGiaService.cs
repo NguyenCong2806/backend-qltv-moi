@@ -20,7 +20,6 @@ namespace WebService.Implement
         {
             return await Add(model);
         }
-
         public async Task<bool> DeleteDocGia(Guid id)
         {
             return await Delete(x => x.Id == id);

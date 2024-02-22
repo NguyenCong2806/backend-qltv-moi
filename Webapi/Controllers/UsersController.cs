@@ -32,7 +32,7 @@ namespace Webapi.Controllers
         {
             return Ok(await _userService.Get(id));
         }
-
+        
         [HttpPost("adduser")]
         public async Task<IActionResult> Add([FromBody] Uservm uservm)
         {

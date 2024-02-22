@@ -15,6 +15,7 @@ namespace WebRepository.Interface
 
         Task<bool> CheckWord(Expression<Func<TEnty, bool>> expression);
         Task<int> CountAsync(Expression<Func<TEnty, bool>> expression);
+        Task<int> CountAsync();
         Task<int> CountAsyncs(IList<Expression<Func<TEnty, bool>>> expression);
         bool Add(TEnty entity);
 

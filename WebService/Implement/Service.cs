@@ -57,6 +57,11 @@ namespace WebService.Implement
             }
         }
 
+        public async Task<int> Count()
+        {
+           return await _repository.CountAsync();
+        }
+
         public async Task<bool> Delete(Expression<Func<TEnty, bool>> expression)
         {
             try

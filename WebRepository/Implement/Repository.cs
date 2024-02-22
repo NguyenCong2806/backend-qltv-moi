@@ -102,6 +102,11 @@ namespace WebRepository.Implement
             }
         }
 
+        public async Task<int> CountAsync()
+        {
+            return await _dbSet.CountAsync();
+        }
+
         public async Task<int> CountAsyncs(IList<Expression<Func<TEnty, bool>>> expression)
         {
             int count = 0;
