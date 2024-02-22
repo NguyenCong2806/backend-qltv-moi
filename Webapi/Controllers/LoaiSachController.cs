@@ -6,8 +6,7 @@ using WebService.Interface;
 namespace Webapi.Controllers
 {
     [Route("api/loaisach")]
-    [ApiController]
-    public class LoaiSachController : ControllerBase
+    public class LoaiSachController : BaseController
     {
         private readonly ILoaiSachService _loaiSachService;
 

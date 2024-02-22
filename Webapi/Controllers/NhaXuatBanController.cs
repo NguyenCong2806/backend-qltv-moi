@@ -8,8 +8,7 @@ using WebService.Interface;
 namespace Webapi.Controllers
 {
     [Route("api/nhaxuatban")]
-    [ApiController]
-    public class NhaXuatBanController : ControllerBase
+    public class NhaXuatBanController : BaseController
     {
         private readonly INhaXuatBanService _nhaXuatBanService;
 

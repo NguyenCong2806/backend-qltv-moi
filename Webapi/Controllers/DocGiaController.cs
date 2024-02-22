@@ -7,8 +7,7 @@ using WebService.Interface;
 namespace Webapi.Controllers
 {
     [Route("api/docgia")]
-    [ApiController]
-    public class DocGiaController : ControllerBase
+    public class DocGiaController : BaseController
     {
         private readonly IDocGiaService _DocGiaService;
 

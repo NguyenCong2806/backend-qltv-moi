@@ -9,8 +9,7 @@ using WebService.Interface;
 namespace Webapi.Controllers
 {
     [Route("api/sach")]
-    [ApiController]
-    public class SachController : ControllerBase
+    public class SachController : BaseController
     {
         private readonly ISachService _sachService;
         private readonly IFileServer _fileServer;

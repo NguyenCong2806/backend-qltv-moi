@@ -9,8 +9,7 @@ namespace Webapi.Controllers
 {
 
     [Route("api/user")]
-    [ApiController]
-    public class UsersController : ControllerBase
+    public class UsersController : BaseController
     {
         private readonly IUserService _userService;
         private readonly IAuthenticate _authenticate;

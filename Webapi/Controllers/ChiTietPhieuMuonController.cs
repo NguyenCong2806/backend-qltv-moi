@@ -7,8 +7,7 @@ using WebService.Interface;
 namespace Webapi.Controllers
 {
     [Route("api/chitietphieumuon")]
-    [ApiController]
-    public class ChiTietPhieuMuonController : ControllerBase
+    public class ChiTietPhieuMuonController : BaseController
     {
         private readonly IChiTietPhieumuonService _chiTietMuonService;
         public ChiTietPhieuMuonController(IChiTietPhieumuonService chiTietPhieumuonService)
